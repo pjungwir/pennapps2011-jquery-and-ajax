@@ -1,21 +1,19 @@
-Hi there everyone!
-%br
-This is slide
-= "#{@slide.sort_order},"
-named
-= "#{@slide.name}."
+#slide
+  = render "#{@slide.name}"
 
-%hr
-- unless @slide.first_slide?
-  = link_to @slide.prev_slide do
-    .prev-slide
-      Prev:
-      = @slide.prev_slide.name
+.slide-navigation
+  - unless @slide.first_slide?
+    = link_to @slide.prev_slide do
+      .prev-slide
+        Prev:
+        = @slide.prev_slide.name
 
 
-- unless @slide.last_slide?
-  = link_to @slide.next_slide do
-    .next-slide
-      Next:
-      = @slide.next_slide.name
+  - unless @slide.last_slide?
+    = link_to @slide.next_slide do
+      .next-slide
+        Next:
+        = @slide.next_slide.name
+
+  .clear
 

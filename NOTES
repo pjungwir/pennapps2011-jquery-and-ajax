@@ -1,0 +1,118 @@
+Splash page:
+
+Intro:
+  - Thank you for letting me speak. Thanks for organizing; for coming.
+
+  - Who am I?
+    - Paul Jungwirth
+    - Programmer for 10+ years, but been in the Classics department the last four.
+    - Now taking a leave of absense to work as CTO for a blossoming startup:
+      Elect Next!
+      - We help you find the candidates who best represent you,
+        all the way down your ticket.
+      - We just got in to DreamIt, a Philly-based accelerator program.
+      - Eight people so far.
+    - Starting to get interest from venture capitalists, so it's very exciting.
+
+  - Topic: jQuery and Ajax.
+
+  - Assumptions: You know HTML and CSS.
+    It will help to know a little bit of Javacript.
+
+The problem:
+  - We want to create faster, more functional websites.
+    we're trying to do more and more with Javascript.
+    - Offload tasks from the server to the web browser.
+        You're not paying for the cpu or bandwidth.
+    - Better user experience:
+        more responsive,
+        non-web things like drag-and-drop.
+
+  - BUT: Javascript is a pain
+    (picture of a messed up website on IE)
+    - browser incompatibilities
+      - IE is the big stinker here.
+        - Most of us can't afford to just ignore it.
+        - There are more and more browsers out there.
+          - You can't just support IE, Firefox, and maybe Safari.
+            - Now there is iPhone, iPad, Android, other tablets....
+
+    - Ajax is tricker: asynchronous, lots of typing, callbacks.
+
+jQuery:
+  - history
+  - 1.4.2 was huge. Now we're up to 1.4.4.
+
+Philosophy:
+
+  Hide browser differences:
+    If really necessary, test for functionality, not browser:
+
+  Graceful degradation:
+
+  Unobtrusive Javascript (UJS):
+    Bad: <a href="javascript:alert('Thanks for clicking me!');">click here</a>
+    What if the user doesn't have javascript?
+    That's messy! Do you really want to read that?
+
+  Select items in the DOM with CSS syntax:
+    ul {
+      background-color: #aaeeff;
+    }
+    .important {
+      border: solid red 2px;
+    }
+
+  Everything is a callback:
+  
+Important Javascript features for using jQuery:
+  Functions are objects:
+    They can be arguments to other functions:
+    They can have their own sub-functions:
+  
+  Single-threaded:
+
+  Event-based:
+
+First Problem: Run some JS after the page is fully loaded:
+  - Necessary for UJS
+    - We want to serve the basic HTML first, then use Javascript to enhance it.
+  - You can't reliably access anything in the DOM before the page is loaded.
+  $(function() {
+    alert("Hello, world!");
+  });
+  - "$" is a valid identifier in Javascript.
+  - So what is it here?
+    - We're calling a function named "$".
+    - We're passing an anonymous function.
+    - "$" is /the/ jQuery function.
+      - Its behavior varies based on what you pass it.
+      - If you pass it a function, then it runs that function
+        when the page is fully-loaded.
+      - It can other things, too, as we'll see.
+  - Another example:
+    function show_login_box() {
+      if (!user_is_logged_in) {
+        // ...
+      }
+    }
+    $(show_login_box);
+    
+    or
+      - remember functions are objects.
+      - What do you do with objects? You assign them to variables!
+
+    var show_login_box = function() {
+      if (!user_is_logged_in) {
+        // ...
+      }
+    }
+    $(show_login_box);
+
+
+Second Problem: Run some JS but only on certain parts of the DOM:
+  - Again, this enables UJS:
+    - We reach into the DOM and add Javascript wherever we like.
+      - If the user doesn't have Javascript, they still get the unadorned HTML.
+
+

@@ -1,0 +1,83 @@
+@import 'defs.scss';
+// @import 'fancy-buttons';
+
+.debug_dump {
+}
+
+a, a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+body {
+  font-family: $body_fonts;
+  background: white;
+  color: black;
+}
+
+table {
+  margin: 0;
+  padding: 0;
+}
+
+td {
+  margin: 0;
+  padding: 0;
+}
+
+tr:nth-child(odd) {
+  background-color: #eeeeee;
+}
+
+#header {
+  border-bottom: solid $dark_gray 1px;
+  margin: 0 0 10px 0;
+
+  img {
+    float: left;
+  }
+  .tagline {
+    float: left;
+    margin: 2px 0 0 10px;
+    color: $dark_gray;
+  }
+}
+
+
+#footer {
+  margin: 10px 0 0 0;
+  padding: 5px 0 0 0;
+  border-top: solid $dark_gray 1px;
+  color: $middle_gray;
+  text-align: right;
+}
+
+#slide {
+  margin: 0 auto 0 auto;
+  width: 800px;
+  padding: 20px;
+  border: solid $dark_gray 1px;
+}
+
+.slide-navigation {
+  margin: 5px auto 0 auto;
+  width: 800px;
+  color: $dark_gray;
+
+  .prev-slide {
+    float: left;
+  }
+
+  .next-slide {
+    float: right;
+  }
+}
+
+.clear {
+  clear: both;
+}

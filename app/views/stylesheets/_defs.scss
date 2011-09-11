@@ -1,0 +1,28 @@
+// $header_fonts: "Impact", "Arial Black", "Arial", "sans-serif";
+$body_fonts: "Arial", "Verdana", "sans-serif";
+
+$red: red;
+$blue: blue;
+$green: green;
+$light_gray: #dddddd;
+$middle_gray: #999999;
+$dark_gray: #444444;
+
+@mixin header {
+  font-family: $header_fonts;
+  background-color: black;
+  color: white;
+}
+
+@mixin gradient($first, $second) {
+  background: $second;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='$first', endColorStr='$second');
+  background: -webkit-gradient(linear, top left, left bottom, from($first), to($second)) no-repeat scroll 0 0 transparent;
+  background: -moz-linear-gradient(top, $first, $second) no-repeat scroll 0 0 transparent;
+}
+
+@mixin drop_shadow($top, $left, $blur, $spread, $color) {
+  -moz-box-shadow: $top $left $blur $spread $color;
+  -webkit-box-shadow: $top $left $blur $spread $color;
+  box-shadow: $top $left $blur $spread $color;
+}
