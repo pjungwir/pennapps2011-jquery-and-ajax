@@ -39,10 +39,16 @@ module PennappsJquery
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
+=begin
     config.action_view.javascript_expansions[:defaults] = [
+      'rails',
+      'effects',
+      'controls',
+      'jquery-ujs',
       'jquery.min',
       'jquery-ui.min'
       # 'application'
     ]
+=end
   end
 end

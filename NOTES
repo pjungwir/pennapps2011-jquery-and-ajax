@@ -1,5 +1,3 @@
-Splash page:
-
 Intro:
   - Thank you for letting me speak. Thanks for organizing; for coming.
 
@@ -15,6 +13,8 @@ Intro:
     - Starting to get interest from venture capitalists, so it's very exciting.
 
   - Topic: jQuery and Ajax.
+    - Disclaimer: we'll only be able to touch on the very basics.
+      Consider this an overview that should tempt you to learn the whole story.
 
   - Assumptions: You know HTML and CSS.
     It will help to know a little bit of Javacript.
@@ -22,6 +22,8 @@ Intro:
 The problem:
   - We want to create faster, more functional websites.
     we're trying to do more and more with Javascript.
+    - Most website code runs on the server.
+      But Javascript runs on the client.
     - Offload tasks from the server to the web browser.
         You're not paying for the cpu or bandwidth.
     - Better user experience:

@@ -1,5 +1,7 @@
 - m_percent = 80
 
+.electnext-header
+  = image_tag 'logo-flat-85.png'
 .candidate-header Rick Perry
 
 .candidate-column
@@ -11,6 +13,8 @@
       %h3 Alignment
       .overall
         = "<span id='overall-match-score'>#{m_percent}</span><span class='percent-sign'>%</span>".html_safe
+      .other-questions
+        5 other questions<br/>answered
 
     .block.padded
       %h3 Seeking<br/>the office of:

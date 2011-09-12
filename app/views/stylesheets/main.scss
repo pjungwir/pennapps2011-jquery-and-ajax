@@ -39,12 +39,15 @@ tr:nth-child(odd) {
   margin: 0 0 10px 0;
 
   img {
-    float: left;
+    // float: left;
+    vertical-align: middle;
+    height: 50px;
   }
   .tagline {
-    float: left;
+    // float: left;
     margin: 2px 0 0 10px;
     color: $dark_gray;
+    display: inline;
   }
 
   .edit-link {
@@ -143,6 +146,10 @@ tr:nth-child(odd) {
         font-size: 120%;
       }
     }
+    .other-questions {
+      font-size: 80%;
+      color: $dark_gray;
+    }
   }
 
 }
@@ -160,6 +167,11 @@ tr:nth-child(odd) {
   .answer-buttons {
     margin: 10px 0 0 0;
     padding: 0 0 0 10px;
+
+    a, a:visited, a:hover {
+      text-decoration: none;
+      color: inherit;
+    }
 
     .answer-button {
       float: left;
