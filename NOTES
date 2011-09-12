@@ -46,9 +46,26 @@ jQuery:
 Philosophy:
 
   Hide browser differences:
-    If really necessary, test for functionality, not browser:
+    - Don't call native javascript functions (especially DOM stuff),
+      but use jQuery calls to wrap browser-testing for you.
+    - Use jQuery events, not native events.
+    - If really necessary, test for functionality, not browser:
+      - jQuery gives you lots of flags for this kind of thing.
+      - It's kind of the autoconf method, if you have ever used that before.
 
   Graceful degradation:
+    - People should be able to use your site even if all the JS doesn't work.
+      - Even Grandma can use the site.
+    - More and more people are abandoning this principle:
+      - "web applications": Gmail, Google maps, ...
+      - others, too: Stack Overflow (kind of).
+      - I'm sympathetic.
+        - "Grandma" isn't the one disabling javascript.
+        - It takes a lot of work the build your site twice.
+        - Javascript and Ajax really do enable better usability.
+        - But if you consider mobile devices, there are a lot of crippled browsers.
+        - And Grandma might be running IE 5 or 6.
+        - So it's still pretty important to aim for graceful degregation.
 
   Unobtrusive Javascript (UJS):
     Bad: <a href="javascript:alert('Thanks for clicking me!');">click here</a>
@@ -56,31 +73,110 @@ Philosophy:
     That's messy! Do you really want to read that?
 
   Select items in the DOM with CSS syntax:
-    ul {
-      background-color: #aaeeff;
+    // Select based on the element name:
+    p {
+      margin-top: 0.8em;
     }
+
+    // Select based on the element's "class" attribute:
     .important {
       border: solid red 2px;
     }
 
+    // Select based on the element's "id" attribute:
+    #header {
+      font-family: Impact;
+      font-size: 150%;
+    }
+
+    // Combine them:
+    ul.todo {
+      background-color: #aaeeff;
+    }
+
+    // Nest them:
+    #header a {
+      color: inherit;
+    }
+
   Everything is a callback:
+    Who has C experience?
+      So what does this mean?:
+        typedef void (*sighandler_t)(int);
+        sighandler_t signal(int signum, sighandler_t handler);
+        If you want to call the `signal` function, what are its two arguments?
+    Callbacks are when you provide a method and ask your framework to call it under certain conditions. It's a little circuitous, but it's sometimes useful. Event-based programming: very important for desktop apps or mobile apps. Also the core idea of node.js. Very important to jQuery.
+    <script type="javascript">
+    function highlight() {
+      // ...
+    }
+    </script>
+    <a onmouseover="javascript:highlight">Click here</a>
+    This is a simple event-based callback.
+
   
 Important Javascript features for using jQuery:
   Functions are objects:
     They can be arguments to other functions:
+      setTimeout(explode, 10000);
+
+      or (an anonymous function)
+
+      setTimeout(function() {
+        alert("Time's up!");
+      }, 10000);
     They can have their own sub-functions:
+    Here is one with a helper function.
+    Note how it can read the state of its parent function:
+      function fibonacci(n) {
+        // Optimization of fibonacci(n-2) + fibonacci(n-1)
+        var results = [1, 1];
+        var _fib = function(n) {
+          if (!results[n]) {
+            results[n] = _fib(n-2) + _fib(n-1);
+          }
+          return results[n];
+        }
+        return _fib(n);
+      }
+    You can use this to create "objects" where the outside function is the constructor:
+      function Dog(theName) {
+        var name = theName;
+        this.speak = function() {
+          alert(name + " says \"Woof!\"");
+        }
+        this.fetch = function () {
+          // ...
+        }
+      }
+
+      var fido = new Dog("Fido");
+      fido.speak();
   
   Single-threaded:
+    Ajax adds asynchronous calls on the network, but only one thread in Javascript.
+    Much simpler!
+    If you do something
 
   Event-based:
+    The DOM has all kinds of events, for clicking, mousing, etc.
 
 First Problem: Run some JS after the page is fully loaded:
   - Necessary for UJS
     - We want to serve the basic HTML first, then use Javascript to enhance it.
   - You can't reliably access anything in the DOM before the page is loaded.
-  $(function() {
-    alert("Hello, world!");
-  });
+  - We could say this:
+    window.onload = function() {
+      // ...
+    }
+
+    But that won't run until all the pictures are loaded, too.
+    Pictures, and YouTube videos, and ....
+
+  - Here is the jQuery:
+    $(function() {
+      alert("Hello, world!");
+    });
   - "$" is a valid identifier in Javascript.
   - So what is it here?
     - We're calling a function named "$".
@@ -88,8 +184,13 @@ First Problem: Run some JS after the page is fully loaded:
     - "$" is /the/ jQuery function.
       - Its behavior varies based on what you pass it.
       - If you pass it a function, then it runs that function
-        when the page is fully-loaded.
+        when the page is fully-loaded. (This is called a ready-handler.)
       - It can other things, too, as we'll see.
+      - You can also call it jQuery, instead of $, to avoid name conflicts.
+      - Or you can do this:
+        (function($) {
+          // Use "$" here....
+        })(jQuery);
   - Another example:
     function show_login_box() {
       if (!user_is_logged_in) {
@@ -110,9 +211,252 @@ First Problem: Run some JS after the page is fully loaded:
     $(show_login_box);
 
 
-Second Problem: Run some JS but only on certain parts of the DOM:
-  - Again, this enables UJS:
+Second Problem: Manipulate the DOM:
+  - Really there are two parts: picking out the elements we care about,
+    then doing something to them.
+  - jQuery lets us query the DOM for the elements we want,
+    which makes UJS easy.
     - We reach into the DOM and add Javascript wherever we like.
       - If the user doesn't have Javascript, they still get the unadorned HTML.
+
+  - jQuery's DOM selection uses a CSS-like syntax,
+    and we get back a "matched set" object, representing those elements.
+    Then we can call methods on the matched set to manipulate the elements' properties.
+    So we make all our main images fade in:
+    $('#body img').fadeIn();
+
+    Here we're asking for all the img tags in our main body of text,
+    and we're making them fade in.
+    The first part is the selection; the second part is the action.
+    The selection uses that dollar sign again! But we're passing a string,
+    not a function, so jQuery interprets it differently.
+    This has nothing to do with ready handlers.
+    Instead jQuery is going to search the DOM for things that match our expression,
+    then return a "matched set" object.
+    We can call methods on that object to affect the elements in the set.
+    In this case, we're making the images fade in.
+
+    Or change the html in something:
+    $('#messages').html(get_latest_tweets());
+
+    Or add a child:
+    $('ul#todo').append("<li>Buy groceries</li>");
+
+    The sector string is very powerful. Actually it supports more than just CSS:
+    $('tr:last-child').addClass('table-bottom');
+    
+    Find all links with an absolute URL:
+    $("a[href^='http://']").addClass('absolute-link');
+
+    You can also pass another matched set as a second parameter,
+    to restrict the search to within that set:
+      var $game = $('#game');
+      function kill_all_monsters() {
+        $('div.monster', $game).remove();
+      }
+
+    These methods generally return the matched set again, so they are chainable:
+    $('#status').removeClass('red').removeClass('yellow').addClass('green');
+
+    Some of the methods available:
+
+    html
+    text
+    append
+    prepend
+    appendTo
+    preprendTo
+    before
+    after
+    insertBefore
+    insertAfter
+
+    wrap
+    wrapAll
+    wrapInner
+    unwrap
+    remove
+    detach
+    empty
+    clone
+    replaceWith
+    replaceAll
+    val
+
+    addClass
+    removeClass
+    hasClass
+    attr
+    css
+    offset
+    position
+    width
+    height
+    data
+    removeData
+
+    show
+    hide
+    toggle
+    fadeIn
+    fadeOut
+    fadeTo
+    slideDown
+    slideUp
+
+  - If the built-in methods don't give you what you need, you can use each:
+  - We want to add syntax highlighting to our slideshow:
+    $(function() {
+      $('code').each(function() {
+        parse_and_add_color(this);
+        $(this).css('border', 'dashed #aaeeff 1px');
+      });
+    });
+    - The function gets called once for each item in the matched set.
+      - jQuery sets `this` to the DOM object for that iteration.
+      - You can say `$(this)` to turn any DOM object into a matched set.
+
+Third Problem: Add a listener:
+  There are lots of events we can listen for:
+    click
+    dblclick
+    blur
+    change
+    error
+    focus
+    focusin
+    focusout
+    keydown
+    keypress
+    keyup
+    load
+    mousedown
+    mousenter
+    mouseleave
+    mouseout
+    mouseover
+    resize
+    scroll
+    select
+    submit
+    unload
+
+  Next slide:
+  - I'll give you an example from Elect Next:
+    - Users create a political profile by answering questions.
+    - We want to record those answers without a full page refresh.
+    - But we want to use UJS. So we listen for jQuery's click event
+      on the places we care about:
+  (SHOW the page here)
+
+  Next slide:
+  <a href="/questions/56/answer?score=sd" class="answer-link">
+    <div class="answer-button">Strongly<br/>Disagree</div>
+  </a>
+  <a href="/questions/56/answer?score=d" class="answer-link">
+    <div class="answer-button">Disagree</div>
+  </a>
+  <a href="/questions/56/answer?score=n" class="answer-link">
+    <div class="answer-button">Neutral</div>
+  </a>
+  <a href="/questions/56/answer?score=a" class="answer-link">
+    <div class="answer-button">Agree</div>
+  </a>
+  <a href="/questions/56/answer?score=sa" class="answer-link">
+    <div class="answer-button">Strongly<br/>Agree</div>
+  </a>
+
+  $(function() {
+    $('a.answer-link').click(function(event) {
+      event.preventDefault();
+      $('a.answer-link', $(this).parent()).removeClass('selected');
+      $(this).addClass('selected');
+      return false;
+    });
+  });
+  - Use event.preventDefault() to cancel the "default semantic action",
+    like following a link or submitting a form.
+  - Return false to prevent the event from propagating further.
+
+
+Fourth Problem: Call a remote server:
+  - We're not saving the answer.
+  - Also, we'd like to update the overall match score when the user answers.
+  - jQuery gives us several functions to make ajax calls:
+    - $.get, $.post, $.ajax
+    - These are like global functions, not methods.
+      (really they're functions nested inside the jQuery function, like _fib or speak.)
+    - The most general function is $.ajax. It takes a big options hash:
+    - $.ajax({
+        url: '/questions/56/answer',
+        type: 'POST',
+        data: 'score=sd',
+        dataType: 'json',
+        success: function(data, status, xhr) {
+          // update the DOM here
+        },
+        error: function(xhr, status, exception) {
+          // something went wrong
+        }
+      });
+    - $.get and $.post are convenient abbreviations. We could say:
+    - $.post('/questions/56/answer', 'score=sd',
+        function(data, status, xhr) {
+          if (status == 'success') {
+            // update the DOM here
+          } else {
+            // something went wrong
+          }
+        },
+        'json');
+    - There is also $.get and $.getJSON, so you don't have to add 'json' at the end.
+    - If you want to use json all the time, you can do this somewhere near the top
+      of your javascript:
+      $.ajaxSetup({dataType: 'json'});
+    - Finally, there's `load`, which is not a global but is called on a matched set.
+      It expects html and replaces the contents of the matched elements with
+      whatever html it gets back from the server.
+    - But we don't really want to hard-code all those strings,
+      so it'd be more realistic to say:
+        before:
+          $.ajax({
+            url: '/questions/56/answer',
+            data: 'score=sd',
+            // ...
+          });
+        after:
+          $.ajax({
+            url: $(this).attr('href'),
+            // ...
+          });
+    - Here is a (nearly) complete example:
+      $(function() {
+        $.ajaxSetup({dataType: 'json'});
+        $('a.answer-link').click(function(event) {
+          event.preventDefault();
+          $('a.answer-link', $(this).parent()).removeClass('selected');
+          $(this).addClass('selected');
+          $.ajax({
+            url: $(this).attr('href'),
+            type: 'POST',
+            success: function(data, status, xhr) {
+              if (data.success) {
+                $('#overall-match-score').html(data.success.score);
+              } else {
+                $('ul#notices').html(show_errors(data.errors));
+              }
+            },
+            error: function(xhr, status, exception) {
+              var msg = exception ? exception.message : ''
+              $('ul#notices').html(show_errors(
+                [status + ": " + msg]
+              ));
+            }
+          });
+          return false;
+        });
+      });
+
+
 
 

@@ -46,6 +46,11 @@ tr:nth-child(odd) {
     margin: 2px 0 0 10px;
     color: $dark_gray;
   }
+
+  .edit-link {
+    float: right;
+    color: $light_gray;
+  }
 }
 
 
@@ -80,4 +85,119 @@ tr:nth-child(odd) {
 
 .clear {
   clear: both;
+}
+
+.candidate-header {
+  background-color: $dark_gray;
+  color: white;
+  padding: 5px 10px 5px 10px;
+  text-align: left;
+  font-size: 150%;
+  margin: 0 0 5px 0;
+}
+
+.candidate-column {
+  float: left;
+  width: 150px;
+  text-align: center;
+
+  .block {
+    background-color: $light_gray;
+    margin-bottom: 3px;
+
+    h3 {
+      color: $dark_gray;
+      font-size: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .candidate-photo {
+      width: 100px;
+      margin: 10px 0 10px 0;
+    }
+    .office-sought {
+      background-color: white;
+      color: $red;
+      padding: 5px 5px 5px 5px;
+      margin: 10px 10px 5px 10px;
+      font-size: 120%;
+    }
+
+    .election-day {
+      color: $dark_gray;
+    }
+  }
+
+  .block.padded {
+    padding: 10px 5px 10px 5px;
+  }
+
+  .alignment {
+    .overall {
+      text-align: center;
+      margin-top: 0px;
+      #overall-match-score {
+        font-size: 500%;
+      }
+      .percent-sign {
+        font-size: 120%;
+      }
+    }
+  }
+
+}
+
+.candidate-main {
+  float: left;
+  width: 600px;
+  margin: 0 0 0 10px;
+
+  .question-text {
+    border: solid $dark_gray 1px;
+    padding: 20px;
+    font-size: 120%;
+  }
+  .answer-buttons {
+    margin: 10px 0 0 0;
+    padding: 0 0 0 10px;
+
+    .answer-button {
+      float: left;
+      width: 80px;
+      height: 39px;
+      color: white;
+      margin: 2px 2px 0 5px;
+      padding: 16px 0 0 0;
+      font-size: 100%;
+      text-align: center;
+    }
+    .answer-button.strongly-disagree, .answer-button.strongly-agree {
+      padding: 7px 0 0 0;
+      height: 48px;
+    }
+    .answer-button:hover {
+      margin: 0 0 0 3px;
+      border: solid $middle_gray 2px;
+    }
+    a.answer-link.selected .answer-button {
+      margin: 0 0 0 3px;
+      border: solid black 2px;
+    }
+  }
+}
+
+.strongly-disagree {
+  background-color: $red;
+}
+.disagree {
+  background-color: $faded_red;
+}
+.neutral {
+  background-color: $yellow;
+}
+.agree {
+  background-color: $faded_green;
+}
+.strongly-agree {
+  background-color: $green;
 }

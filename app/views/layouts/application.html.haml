@@ -11,8 +11,10 @@
   %body
 
     #header
-      = image_tag 'logo-flat-85.png'
+      -#= image_tag 'logo-flat-85.png'
+      = image_tag 'pennapps-logo.png'
       .tagline PennApps: Introduction to jQuery and Ajax
+      .edit-link= link_to '[edit]', '/admin/slides'
       .clear
     
     #body

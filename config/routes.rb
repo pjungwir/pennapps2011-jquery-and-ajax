@@ -58,6 +58,11 @@ PennappsJquery::Application.routes.draw do
 
   resources :slides, :only => [:show]
 
+  resources :questions, :only => [:answer] do
+    post 'answer', :on => :member, :as => 'answer', :to => 'questions#answer'
+    get 'answer', :on => :member, :as => 'answer', :to => 'questions#answer'
+  end
+
   namespace :admin do
     resources :slides do
       post 'up', :on => :member, :as => 'decrement', :to => 'slides#decrement'
