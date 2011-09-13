@@ -36,6 +36,20 @@ function Dog(theName) {
   }
 }
 
+function prev_slide() {
+  var loc = $('a.prev-slide-link').attr('href');
+  if (loc) {
+    window.location = loc;
+  }
+}
+
+function next_slide() {
+  var loc = $('a.next-slide-link').attr('href');
+  if (loc) {
+    window.location = loc;
+  }
+}
+
 $(function() {
   $.ajaxSetup({dataType: 'json'});
 
@@ -80,5 +94,15 @@ $(function() {
   $('button.fido').click(function(event) {
     var fido = new Dog("Fido");
     fido.speak();
+  });
+
+  $(document).keyup(function(event) {
+    if (event.which == 39) {
+      // left arrow
+      next_slide();
+    } else if (event.which == 37) {
+      // right arrow
+      prev_slide();
+    }
   });
 });
