@@ -1,0 +1,13 @@
+%h1 Second Problem: Manipulate the DOM
+
+Chainable:
+
+%pre{:class => 'brush: js'}
+  :preserve
+  :escaped
+    function a_okay() {
+      $('#status').removeClass('red').
+                   removeClass('yellow').
+                   addClass('green');
+    }
+

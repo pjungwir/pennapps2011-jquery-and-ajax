@@ -47,12 +47,12 @@ class Admin::SlidesController < ApplicationController
     end
   end
 
-  def increment
+  def decrement
     object.move_up
     redirect_to admin_slides_path
   end
 
-  def decrement
+  def increment
     object.move_down
     redirect_to admin_slides_path
   end

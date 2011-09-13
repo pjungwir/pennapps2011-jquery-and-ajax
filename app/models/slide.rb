@@ -3,7 +3,7 @@ class Slide < ActiveRecord::Base
 
   validates :name, :presence => true
   
-  validates :sort_order, :presence => true,
+  validates :sort_order, #:presence => true,
                          :uniqueness => true
 
   scope :in_order, order('slides.sort_order')
@@ -45,9 +45,13 @@ class Slide < ActiveRecord::Base
   end
 
   def swap_position(a, b)
-    (a.sort_order, b.sort_order) = b.sort_order, a.sort_order
+    (old_a, old_b) = a.sort_order, b.sort_order
+    a.sort_order = nil
     a.save!
+    b.sort_order = old_a
     b.save!
+    a.sort_order = old_b
+    a.save!
   end
 
   def move_up

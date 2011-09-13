@@ -1,0 +1,8 @@
+%h1 Second Problem: Manipulate the DOM
+
+Change the html in our messages area:
+
+%pre{:class => 'brush: js'}
+  :preserve
+  :escaped
+    $('#messages').html(get_latest_tweets());

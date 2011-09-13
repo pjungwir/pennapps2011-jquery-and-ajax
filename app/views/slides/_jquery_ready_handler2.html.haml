@@ -1,0 +1,18 @@
+%h1 First Problem: Ready Handler
+
+another example:
+
+= render 'jquery_ready_handler2_code'
+
+or
+
+%pre{:class => 'brush: js'}
+  :preserve
+  :escaped
+    var show_login_box = function() {
+      if (!user_is_logged_in()) {
+        // ...
+      }
+    };
+
+    $(show_login_box);

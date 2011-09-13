@@ -1,0 +1,16 @@
+%h1 Second Problem: Manipulate the DOM
+
+Or use <code>each</code>:
+
+
+%pre{:class => 'brush: js'}
+  :preserve
+  :escaped
+    $(function() {
+      $('code').each(function() {
+        parse_and_add_color(this);
+        $(this).css('border', 'dashed #aaeeff 1px');
+      });
+    });
+
+

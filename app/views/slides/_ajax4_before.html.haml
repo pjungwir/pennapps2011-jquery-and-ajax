@@ -1,0 +1,11 @@
+
+%pre{:class => 'brush: js'}
+  :preserve
+  :escaped
+    $('a.answer-link').click(function(event) {
+      $.ajax({
+        url: '/questions/56/answer',
+        data: 'score=sd',
+        // ...
+      });
+    });

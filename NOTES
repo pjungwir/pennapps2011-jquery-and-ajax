@@ -24,11 +24,20 @@ The problem:
     we're trying to do more and more with Javascript.
     - Most website code runs on the server.
       But Javascript runs on the client.
-    - Offload tasks from the server to the web browser.
-        You're not paying for the cpu or bandwidth.
     - Better user experience:
         more responsive,
         non-web things like drag-and-drop.
+        gmail, google maps, google docs: all are built with javascript.
+    - Offload tasks from the server to the web browser.
+        You're not paying for the cpu or bandwidth.
+
+  - So what does Javascript look like?
+    - A lot like C/Java!
+      - You've got curly braces, semi-colons.
+      - Variables looks similar, except you just declare them with a "var".
+      - To define a function you say "function". There's still a return statement.
+      - The alert() function is built in and pops up a dialog box.
+      - There's a Math namespace which provides math-related functions.
 
   - BUT: Javascript is a pain
     (picture of a messed up website on IE)
@@ -42,8 +51,8 @@ The problem:
     - Ajax is tricker: asynchronous, lots of typing, callbacks.
 
 jQuery:
-  - history
-  - 1.4.2 was huge. Now we're up to 1.4.4.
+  - history: started in 2005.
+  - 1.4 was huge. Now we're up to 1.6.3.
 
 Philosophy:
 
@@ -66,7 +75,7 @@ Philosophy:
         - It takes a lot of work the build your site twice.
         - Javascript and Ajax really do enable better usability.
         - But if you consider mobile devices, there are a lot of crippled browsers.
-        - And Grandma might be running IE 5 or 6.
+        - And Grandma might be running IE 5.
         - So it's still pretty important to aim for graceful degregation.
 
   Unobtrusive Javascript (UJS):
@@ -211,6 +220,9 @@ First Problem: Run some JS after the page is fully loaded:
       }
     }
     $(show_login_box);
+
+  - So that's the Ready Handler
+  - Most of the code we write will go into a ready handler.
 
 
 Second Problem: Manipulate the DOM:

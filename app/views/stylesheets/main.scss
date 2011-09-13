@@ -139,7 +139,7 @@ tr:nth-child(odd) {
     .overall {
       text-align: center;
       margin-top: 0px;
-      #overall-match-score {
+      #overall-match-score, #overall-match-score-dead {
         font-size: 500%;
       }
       .percent-sign {
@@ -212,4 +212,30 @@ tr:nth-child(odd) {
 }
 .strongly-agree {
   background-color: $green;
+}
+
+.architecture-image {
+  text-align: center;
+  img {
+    width: 300px;
+  }
+}
+
+.browsers {
+  margin: 20px 0 0 0;
+  img {
+    float: left;
+    margin: 0 5px 0 0;
+    width: 100px;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.col {
+  float: left;
+  background-color: $light_gray;
+  margin: 0 10px 0 0;
 }

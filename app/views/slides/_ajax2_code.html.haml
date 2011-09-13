@@ -1,0 +1,15 @@
+%pre{:class => 'brush: js'}
+  :preserve
+  :escaped
+    $.ajax({
+      url: '/questions/56/answer',
+      type: 'POST',
+      data: 'score=sd',
+      dataType: 'json',
+      success: function(data, status, xhr) {
+        // update the DOM here
+      },
+      error: function(xhr, status, exception) {
+        // something went wrong
+      }
+    });

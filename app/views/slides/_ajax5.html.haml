@@ -1,0 +1,33 @@
+%h1 Fourth Problem: Call a Remote Server
+
+
+%pre{:class => 'brush: js'}
+  :preserve
+  :escaped
+    $(function() {
+      $('a.answer-link').click(function(event) {
+        event.preventDefault();
+        $('a.answer-link', $(this).parent()).removeClass('selected');
+        $(this).addClass('selected');
+        $.ajax({
+          url: $(this).attr('href'),
+          type: 'POST',
+          dataType: 'json',
+          success: function(data, status, xhr) {
+            if (data.success) {
+              $('#overall-match-score').html(data.success.score);
+            } else {
+              $('ul#notices').html(show_errors(data.errors));
+            }
+          },
+          error: function(xhr, status, exception) {
+            var msg = exception ? exception.message : ''
+            $('ul#notices').html(show_errors(
+              [status + ": " + msg]
+            ));
+          }
+        });
+        return false;
+      });
+    });
+

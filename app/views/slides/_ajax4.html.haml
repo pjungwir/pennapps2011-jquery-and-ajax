@@ -1,0 +1,17 @@
+%h1 Fourth Problem: Call a Remote Server
+
+before:
+
+= render 'ajax4_before'
+
+after:
+
+%pre{:class => 'brush: js'}
+  :preserve
+  :escaped
+    $('a.answer-link').click(function(event) {
+      $.ajax({
+        url: $(this).attr('href'),
+        // ...
+      });
+    });

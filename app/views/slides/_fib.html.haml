@@ -1,0 +1,17 @@
+%pre{:class => 'brush: js'}
+  :preserve
+  :escaped
+    function fibonacci(n) {
+      // Optimization of fibonacci(n-2) + fibonacci(n-1)
+      var results = [1, 1];
+      var _fib = function(n) {
+        if (!results[n]) {
+          results[n] = _fib(n-2) + _fib(n-1);
+        }
+        return results[n];
+      }
+      return _fib(n);
+    }
+
+
+

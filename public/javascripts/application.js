@@ -7,6 +7,35 @@ function show_errors(errors) {
   }).join("\n");
 }
 
+function euclidean_distance(x1, y1, x2, y2) {
+  var tmp = Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2);
+  return Math.sqrt(tmp);
+}
+
+function fibonacci(n) {
+  // Optimization of fibonacci(n-2) + fibonacci(n-1)
+  var results = [1, 1];
+  var _fib = function(n) {
+    if (!results[n]) {
+      results[n] = _fib(n-2) + _fib(n-1);
+    }
+    return results[n];
+  }
+  return _fib(n);
+}
+
+function Dog(theName) {
+  this.name = theName;
+
+  this.speak = function() {
+    alert(this.name + ' says "Woof!"');
+  }
+  
+  this.fetch = function() {
+    // ...
+  }
+}
+
 $(function() {
   $.ajaxSetup({dataType: 'json'});
 
@@ -32,5 +61,24 @@ $(function() {
       }
     });
     return false;
+  });
+
+  SyntaxHighlighter.all();
+
+  $('button.euclid').click(function(event) {
+    event.preventDefault();
+    alert(euclidean_distance(2, 2, 5, 6));
+    return false;
+  });
+
+  $('button.fib').click(function(event) {
+    event.preventDefault();
+    alert(fibonacci(25));
+    return false;
+  });
+
+  $('button.fido').click(function(event) {
+    var fido = new Dog("Fido");
+    fido.speak();
   });
 });
