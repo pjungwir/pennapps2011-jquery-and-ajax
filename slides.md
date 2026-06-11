@@ -93,7 +93,6 @@ Notes:
 
 
 # Browser Incompatibilities
-<!-- .element: class="r-fit-text" -->
 
 ![Internet Explorer Javascript search screenshot](img/ie-javascript-search-screenshot.png) <!-- .element style="width: 600px" -->
 
@@ -370,8 +369,8 @@ Notes:
 
 
 
-# First Problem: Ready Handler
-<!-- .element: class="r-fit-text" -->
+# First Problem:
+# Ready Handler
 
 We want to run some Javascript<br/>
 after the page is fully loaded.
@@ -396,8 +395,8 @@ Notes:
 
 
 
-# First Problem: Ready Handler
-<!-- .element: class="r-fit-text" -->
+# First Problem:
+# Ready Handler
 
 ```javascript
 $(function() {
@@ -420,8 +419,8 @@ Notes:
 
 
 
-# First Problem: Ready Handler
-<!-- .element: class="r-fit-text" -->
+# First Problem:
+# Ready Handler
 
 another example:
 
@@ -456,7 +455,8 @@ Notes:
 
 
 
-# Second Problem: Manipulate the DOM
+# Second Problem:
+# Manipulate the DOM
 <!-- .element: class="r-fit-text" -->
 
 Make all our main images fade in:
@@ -478,7 +478,8 @@ Notes:
 
 
 
-# Second Problem: Manipulate the DOM
+# Second Problem:
+# Manipulate the DOM
 <!-- .element: class="r-fit-text" -->
 
 Change the html in our messages area:
@@ -493,7 +494,8 @@ Notes:
 
 
 
-# Second Problem: Manipulate the DOM
+# Second Problem:
+# Manipulate the DOM
 <!-- .element: class="r-fit-text" -->
 
 Add a new row to a list:
@@ -508,7 +510,8 @@ Notes:
 
 
 
-# Second Problem: Manipulate the DOM
+# Second Problem:
+# Manipulate the DOM
 <!-- .element: class="r-fit-text" -->
 
 More than just CSS:
@@ -523,7 +526,8 @@ Notes:
 
 
 
-# Second Problem: Manipulate the DOM
+# Second Problem:
+# Manipulate the DOM
 <!-- .element: class="r-fit-text" -->
 
 Find all the links with an absolute URL:
@@ -538,7 +542,8 @@ Notes:
 
 
 
-# Second Problem: Manipulate the DOM
+# Second Problem:
+# Manipulate the DOM
 <!-- .element: class="r-fit-text" -->
 
 Restrict the search based on another matched set:
@@ -557,7 +562,8 @@ Notes:
 
 
 
-# Second Problem: Manipulate the DOM
+# Second Problem:
+# Manipulate the DOM
 <!-- .element: class="r-fit-text" -->
 
 Chainable:
@@ -576,7 +582,8 @@ Notes:
 
 
 
-# Second Problem: Manipulate the DOM
+# Second Problem:
+# Manipulate the DOM
 <!-- .element: class="r-fit-text" -->
 
 Lots of methods to use:
@@ -638,7 +645,8 @@ Notes:
 
 
 
-# Second Problem: Manipulate the DOM
+# Second Problem:
+# Manipulate the DOM
 <!-- .element: class="r-fit-text" -->
 
 Or use `each`:
@@ -662,8 +670,8 @@ Notes:
 
 
 
-# Third Problem: Add a Listener
-<!-- .element: class="r-fit-text" -->
+# Third Problem:
+# Add a Listener
 
 Lots of events to choose from:
 
@@ -702,8 +710,8 @@ Notes:
 
 
 
-# Third Problem: Add a Listener
-<!-- .element: class="r-fit-text" -->
+# Third Problem:
+# Add a Listener
 
 <div class="electnext-demo">
   <div class="electnext-header"><img src="img/logo-flat-85.png"></div>
@@ -744,8 +752,8 @@ Notes:
 
 
 
-# Third Problem: Add a Listener
-<!-- .element: class="r-fit-text" -->
+# Third Problem:
+# Add a Listener
 
 ```html
 <a href="/questions/56/answer?score=sd" class="answer-link">
@@ -784,7 +792,8 @@ Notes:
 
 
 
-# Fourth Problem: Call a Remote Server
+# Fourth Problem:
+# Call a Remote Server
 <!-- .element: class="r-fit-text" -->
 
 `$.get`
@@ -802,7 +811,8 @@ Notes:
 
 
 
-# Fourth Problem: Call a Remote Server
+# Fourth Problem:
+# Call a Remote Server
 <!-- .element: class="r-fit-text" -->
 
 ```javascript
@@ -826,7 +836,8 @@ Notes:
 
 
 
-# Fourth Problem: Call a Remote Server
+# Fourth Problem:
+# Call a Remote Server
 <!-- .element: class="r-fit-text" -->
 
 or
@@ -852,7 +863,8 @@ Notes:
 
 
 
-# Fourth Problem: Call a Remote Server
+# Fourth Problem:
+# Call a Remote Server
 <!-- .element: class="r-fit-text" -->
 
 before:
@@ -884,7 +896,8 @@ Notes:
 
 
 
-# Fourth Problem: Call a Remote Server
+# Fourth Problem:
+# Call a Remote Server
 <!-- .element: class="r-fit-text" -->
 
 ```javascript
