@@ -1,6 +1,6 @@
-# TALK TITLE
+# Introduction to jQuery and Ajax
 
-These are the slides and my notes for a talk about TOPIC, given at VENUE.
+These are the slides and my notes for a talk introducing jQuery and Ajax to web developers — the problems jQuery solves, its philosophy, and how to use it to manipulate the DOM, listen for events, and call a remote server. I gave it at [PennApps](https://pennapps.com/) on 13 September 2011, at King's Court English College House.
 
 The slides are built on [reveal.js](https://github.com/hakimel/reveal.js/).
 You also can get [all the slides as a PDF](slides.pdf),
