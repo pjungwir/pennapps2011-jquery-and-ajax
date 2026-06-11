@@ -31,6 +31,7 @@ Notes:
 
 
 # Website: No Scripting
+<!-- .element: class="r-fit-text" -->
 
 ![A website with no scripting](img/website-architecture-no-scripting.png)
 
@@ -42,6 +43,7 @@ Notes:
 
 
 # Website: With Scripting
+<!-- .element: class="r-fit-text" -->
 
 ![A website with server-side scripting](img/website-architecture-with-scripting.png)
 
@@ -53,6 +55,7 @@ Notes:
 
 
 # Website: With Javascript
+<!-- .element: class="r-fit-text" -->
 
 ![A website with Javascript](img/website-architecture-with-javascript.png)
 
@@ -90,6 +93,7 @@ Notes:
 
 
 # Browser Incompatibilities
+<!-- .element: class="r-fit-text" -->
 
 ![Internet Explorer Javascript search screenshot](img/ie-javascript-search-screenshot.png) <!-- .element style="width: 600px" -->
 
@@ -158,6 +162,7 @@ Notes:
 
 
 # jQuery Philosophy
+<!-- .element: class="r-fit-text" -->
 
 ![Philosophers](img/philosophers.jpg)
 
@@ -168,6 +173,7 @@ Notes:
 
 
 # jQuery Philosophy
+<!-- .element: class="r-fit-text" -->
 
 ### Hide browser differences.
 
@@ -266,6 +272,7 @@ Notes:
 
 
 # Callbacks for Events
+<!-- .element: class="r-fit-text" -->
 
 ```html
 <script type="javascript">
@@ -284,6 +291,7 @@ Notes:
 
 
 # Functions are Objects
+<!-- .element: class="r-fit-text" -->
 
 ```javascript
 setTimeout(explode, 10000);
@@ -305,6 +313,7 @@ Notes:
 
 
 # Functions are Objects
+<!-- .element: class="r-fit-text" -->
 
 Sub-functions:
 
@@ -330,6 +339,7 @@ Notes:
 
 
 # Functions are Objects
+<!-- .element: class="r-fit-text" -->
 
 Functions as constructors:
 
@@ -361,6 +371,7 @@ Notes:
 
 
 # First Problem: Ready Handler
+<!-- .element: class="r-fit-text" -->
 
 We want to run some Javascript<br/>
 after the page is fully loaded.
@@ -386,6 +397,7 @@ Notes:
 
 
 # First Problem: Ready Handler
+<!-- .element: class="r-fit-text" -->
 
 ```javascript
 $(function() {
@@ -409,6 +421,7 @@ Notes:
 
 
 # First Problem: Ready Handler
+<!-- .element: class="r-fit-text" -->
 
 another example:
 
@@ -444,6 +457,7 @@ Notes:
 
 
 # Second Problem: Manipulate the DOM
+<!-- .element: class="r-fit-text" -->
 
 Make all our main images fade in:
 
@@ -465,6 +479,7 @@ Notes:
 
 
 # Second Problem: Manipulate the DOM
+<!-- .element: class="r-fit-text" -->
 
 Change the html in our messages area:
 
@@ -479,6 +494,7 @@ Notes:
 
 
 # Second Problem: Manipulate the DOM
+<!-- .element: class="r-fit-text" -->
 
 Add a new row to a list:
 
@@ -493,6 +509,7 @@ Notes:
 
 
 # Second Problem: Manipulate the DOM
+<!-- .element: class="r-fit-text" -->
 
 More than just CSS:
 
@@ -507,6 +524,7 @@ Notes:
 
 
 # Second Problem: Manipulate the DOM
+<!-- .element: class="r-fit-text" -->
 
 Find all the links with an absolute URL:
 
@@ -521,6 +539,7 @@ Notes:
 
 
 # Second Problem: Manipulate the DOM
+<!-- .element: class="r-fit-text" -->
 
 Restrict the search based on another matched set:
 
@@ -539,6 +558,7 @@ Notes:
 
 
 # Second Problem: Manipulate the DOM
+<!-- .element: class="r-fit-text" -->
 
 Chainable:
 
@@ -557,6 +577,7 @@ Notes:
 
 
 # Second Problem: Manipulate the DOM
+<!-- .element: class="r-fit-text" -->
 
 Lots of methods to use:
 
@@ -618,6 +639,7 @@ Notes:
 
 
 # Second Problem: Manipulate the DOM
+<!-- .element: class="r-fit-text" -->
 
 Or use `each`:
 
@@ -641,6 +663,7 @@ Notes:
 
 
 # Third Problem: Add a Listener
+<!-- .element: class="r-fit-text" -->
 
 Lots of events to choose from:
 
@@ -680,6 +703,7 @@ Notes:
 
 
 # Third Problem: Add a Listener
+<!-- .element: class="r-fit-text" -->
 
 <div class="electnext-demo">
   <div class="electnext-header"><img src="img/logo-flat-85.png"></div>
@@ -721,6 +745,7 @@ Notes:
 
 
 # Third Problem: Add a Listener
+<!-- .element: class="r-fit-text" -->
 
 ```html
 <a href="/questions/56/answer?score=sd" class="answer-link">
@@ -760,6 +785,7 @@ Notes:
 
 
 # Fourth Problem: Call a Remote Server
+<!-- .element: class="r-fit-text" -->
 
 `$.get`
 
@@ -777,6 +803,7 @@ Notes:
 
 
 # Fourth Problem: Call a Remote Server
+<!-- .element: class="r-fit-text" -->
 
 ```javascript
 $.ajax({
@@ -800,6 +827,7 @@ Notes:
 
 
 # Fourth Problem: Call a Remote Server
+<!-- .element: class="r-fit-text" -->
 
 or
 
@@ -825,6 +853,7 @@ Notes:
 
 
 # Fourth Problem: Call a Remote Server
+<!-- .element: class="r-fit-text" -->
 
 before:
 
@@ -856,6 +885,7 @@ Notes:
 
 
 # Fourth Problem: Call a Remote Server
+<!-- .element: class="r-fit-text" -->
 
 ```javascript
 $(function() {
